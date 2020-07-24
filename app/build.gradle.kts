@@ -52,4 +52,13 @@ dependencies {
     val hiltVersion = "2.28-alpha"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    // Retrofit
+    val retrofit2Version = "2.6.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofit2Version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit2Version")
+}
+
+kapt {
+    correctErrorTypes = true
 }
