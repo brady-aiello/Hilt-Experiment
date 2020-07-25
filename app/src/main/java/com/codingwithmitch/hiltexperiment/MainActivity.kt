@@ -3,9 +3,9 @@ package com.codingwithmitch.hiltexperiment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.scopes.ActivityScoped
-import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,6 +36,21 @@ class MyFragment: Fragment() {
  .ActivityC scoped with @dagger.hilt.android.scopes.ActivityScoped
  may not reference bindings with different scopes:
 */
-class SomeClass @Inject constructor() {
-    fun doAThing(): String = "Look I did a thing!"
+class SomeClass @Inject constructor(
+        //private val someInterface: SomeInterface,
+        private val gson: Gson
+) {
+    fun doAThing(): String = "Look I got a thing" //${someInterface.getAThing()}"
+}
+
+class SomeInterfaceImpl
+@Inject
+constructor(): SomeInterface {
+    override fun getAThing() : String {
+        return "A Thing"
+    }
+}
+
+interface SomeInterface {
+    fun getAThing(): String
 }
