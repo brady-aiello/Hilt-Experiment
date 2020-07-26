@@ -10,7 +10,7 @@ interface BlogDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(blogCacheEntity: BlogCacheEntity): Long
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(blogCacheEntities: List<BlogCacheEntity>): Unit
 
     @Query("SELECT * FROM blogs")
