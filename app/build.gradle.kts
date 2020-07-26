@@ -1,10 +1,10 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("dagger.hilt.android.plugin")
     kotlin("kapt")
     kotlin("android.extensions")
     kotlin("android")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -52,6 +52,10 @@ dependencies {
     val hiltVersion = "2.28-alpha"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    val hiltViewModelsVersion = "1.0.0-alpha01"
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelsVersion")
+    kapt("androidx.hilt:hilt-compiler:$hiltViewModelsVersion")
 
     // Retrofit
     val retrofit2Version = "2.6.0"
