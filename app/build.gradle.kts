@@ -18,7 +18,7 @@ android {
         versionCode(1)
         versionName("1.0")
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.codingwithmitch.hiltexperiment.MyTestRunner"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments(mutableMapOf(
@@ -46,17 +46,13 @@ android {
 }
 
 dependencies {
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.0")
     val kotlinVersion = rootProject.extra.get("kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("androidx.core:core-ktx:1.3.1")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("com.google.android.material:material:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    testImplementation("junit:junit:4.13")
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+
 
     // Hilt
     val hiltVersion = "2.28-alpha"
@@ -77,8 +73,8 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
 
-    val fragmentKtxVersion = "1.3.0-alpha07"
-    implementation("androidx.fragment:fragment-ktx:$fragmentKtxVersion")
+    val fragmentVersion = "1.3.0-alpha07"
+    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
 
     val activityKtxVersion = "1.2.0-alpha07"
     implementation("androidx.activity:activity-ktx:$activityKtxVersion")
@@ -88,7 +84,22 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
 
+    val navigationVersion = "2.3.0"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
 
+    // Test
+
+    testImplementation("junit:junit:4.13")
+    androidTestImplementation("androidx.test.ext:junit:1.1.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:$hiltVersion")
+
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    debugImplementation("androidx.fragment:fragment-testing:$fragmentVersion")
+
+    val testVersion = "1.3.0-rc01"
+    androidTestImplementation("androidx.test:core-ktx:$testVersion")
 }
 
 kapt {
