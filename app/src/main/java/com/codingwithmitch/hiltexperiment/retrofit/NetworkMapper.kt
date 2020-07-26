@@ -4,7 +4,7 @@ import com.codingwithmitch.hiltexperiment.model.Blog
 import com.codingwithmitch.hiltexperiment.util.EntityMapper
 import javax.inject.Inject
 
-class NetworkManager @Inject constructor(): EntityMapper<BlogNetworkEntity, Blog> {
+class NetworkMapper @Inject constructor(): EntityMapper<BlogNetworkEntity, Blog> {
     override fun mapFromEntity(entity: BlogNetworkEntity): Blog {
 
         return Blog(id = entity.id,

@@ -19,6 +19,14 @@ android {
         versionName("1.0")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments(mutableMapOf(
+                    "room.schemaLocation" to "$projectDir/schemas",
+                    "room.incremental" to "true")
+                )
+            }
+        }
     }
 
     buildTypes {
@@ -61,6 +69,11 @@ dependencies {
     val retrofit2Version = "2.6.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofit2Version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit2Version")
+
+    val roomVersion = "2.2.5"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 }
 
 kapt {
